@@ -6,5 +6,12 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="keep_logged_in">Keep logged in</string>
+    <string name="not_registered_">Not registered ?</string>
+    <string name="sign_up">Sign Up</string>
 
 </resources>
