@@ -22,6 +22,7 @@ public class HomeActivity extends Activity
 	getMenuInflater().inflate(R.menu.activity_home, menu);
 	return true;
     }
+
     public void openActivity(View v)
     {
 	Intent i = new Intent(getBaseContext(), MainActivity.class);

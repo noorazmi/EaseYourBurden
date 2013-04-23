@@ -1,5 +1,9 @@
 <resources>
 
-    <style name="AppTheme" parent="android:Theme.Holo.Light" />
+   <!--  <style name="AppTheme" parent="android:Theme.Holo.Light" /> -->
+    <style name="AppTheme" parent="@android:style/Theme.Holo.Light" >
+        <item name="android:windowBackground">@drawable/theme_color</item>
+    </style>
+    <style name="fullScreenNoTitleTheme" parent="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" />
 
 </resources>

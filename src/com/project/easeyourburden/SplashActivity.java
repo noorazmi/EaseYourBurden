@@ -15,17 +15,18 @@ public class SplashActivity extends Activity
     {
 	setTheme(R.style.AppTheme);
 	super.onCreate(savedInstanceState);
-	
-	//requestWindowFeature(Window.FEATURE_NO_TITLE);
-	//getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+	// requestWindowFeature(Window.FEATURE_NO_TITLE);
+	// getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+	// WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	setContentView(R.layout.activity_splash);
-	//if(Utility.isThemed)
-        //setTheme(R.style.AppTheme);
+	// if(Utility.isThemed)
+	// setTheme(R.style.AppTheme);
 	timer = new SplashTimer(3000, 1000);
 	timer.start();
-	
+
     }
-    
+
     private class SplashTimer extends CountDownTimer
     {
 
@@ -43,16 +44,18 @@ public class SplashActivity extends Activity
 	}
 
 	@Override
-	public void onTick(long millisUntilFinished){}
-	
+	public void onTick(long millisUntilFinished)
+	{}
+
     }
-    
+
     @Override
     public void onBackPressed()
     {
 	timer.cancel();
-        super.onBackPressed();
+	super.onBackPressed();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {

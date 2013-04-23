@@ -13,5 +13,7 @@
     <string name="keep_logged_in">Keep logged in</string>
     <string name="not_registered_">Not registered ?</string>
     <string name="sign_up">Sign Up</string>
+    <string name="signup">SignUp</string>
+    <string name="name">Name</string>
 
 </resources>
