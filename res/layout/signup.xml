@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:ems="10" 
-            android:hint="@string/name"/>
+            android:hint="@string/name"
+            android:singleLine="true"/>
 
         <EditText
             android:id="@+id/username"
@@ -25,7 +26,8 @@
             android:layout_below="@+id/name"
             android:layout_centerHorizontal="true"
             android:ems="10" 
-            android:hint="@string/username"/>
+            android:hint="@string/username"
+            android:singleLine="true"/>
 
         <EditText
             android:id="@+id/editText3"
