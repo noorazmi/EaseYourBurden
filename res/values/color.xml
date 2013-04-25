@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_theme_start_color">#0E0BE5</color>
+    <color name="app_theme_end_color">#ADA2FF</color>
+</resources>

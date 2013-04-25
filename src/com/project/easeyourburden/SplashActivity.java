@@ -13,12 +13,11 @@ public class SplashActivity extends Activity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-	setTheme(R.style.AppTheme);
+	//setTheme(R.style.AppTheme);
 	super.onCreate(savedInstanceState);
 
-	// requestWindowFeature(Window.FEATURE_NO_TITLE);
-	// getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-	// WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	//requestWindowFeature(Window.FEATURE_NO_TITLE);
+	//getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	setContentView(R.layout.activity_splash);
 	// if(Utility.isThemed)
 	// setTheme(R.style.AppTheme);
