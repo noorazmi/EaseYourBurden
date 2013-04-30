@@ -83,4 +83,7 @@ public class Login extends FragmentActivity
 	    return super.onOptionsItemSelected(item);
 	}
     }
+    
+    ((FragmentDialog)getActivity()).showDialog();
+
 }
