@@ -1,38 +1,58 @@
 package com.project.dialogs;
 
-import android.R;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.project.easeyourburden.Login;
+import com.project.easeyourburden.R;
+import com.project.easeyourburden.interfaces.DialogOkButtonClickListener;
 
 public class OkDialogFragment extends DialogFragment
 {
-    private int type;
-    public static OkDialogFragment getInstance(int type)
+    public DialogOkButtonClickListener dialogOkButtonClickListener;
+    
+   
+
+    public static OkDialogFragment getInstance()
     {
 	OkDialogFragment okDialogFragment = new OkDialogFragment();
-	Bundle bundle = new Bundle();
-	bundle.putInt("type", type);
-	okDialogFragment.setArguments(bundle);
 	return okDialogFragment;
+    }
+    
+    public void setDialogOkButtonClickListener(DialogOkButtonClickListener dialogOkButtonClickListener)
+    {
+	this.dialogOkButtonClickListener = dialogOkButtonClickListener;
+	
     }
     
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        type = getArguments().getInt("type");
-        int style = type;
-        int theme = type;
-        setStyle(style, theme);
+        setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Holo_Light_Dialog);
     }
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-	View v = inflater.inflate(R.layout.select_dialog_item, container);
-	return v;
+	View v = inflater.inflate(R.layout.ok_dialog_fragment, container,false);
+	Button button = (Button)v.findViewById(R.id.ok_button);
+        button.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                // When button is clicked, call up to owning activity.
+               //((Login)getActivity()).hideDialog();
+        	dialogOkButtonClickListener.onDialogOkButtonClick();
+        	
+            }
+        });
+
+        return v;
+	
     }
+    
 }

@@ -1,20 +1,29 @@
 package com.project.easeyourburden;
 
+import com.project.dialogs.OkDialogFragment;
+import com.project.easeyourburden.interfaces.DialogOkButtonClickListener;
+
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class Login extends FragmentActivity
+public class Login extends FragmentActivity implements DialogOkButtonClickListener
 {
     private MenuItem signUPMenuItem;
+    private DialogFragment okDialogFragment;
+    private FragmentManager fragmentManager = getSupportFragmentManager(); 
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -83,7 +92,42 @@ public class Login extends FragmentActivity
 	    return super.onOptionsItemSelected(item);
 	}
     }
+
+    public void onLoginButtonClick(View v)
+    {
+	showDialog();
+    }
+
+    public void showDialog()
+    {
+
+	// DialogFragment.show() will take care of adding the fragment
+	// in a transaction. We also want to remove any currently showing
+	// dialog, so make our own transaction and take care of that here.
+	FragmentTransaction ft = fragmentManager.beginTransaction();
+	Fragment prev = fragmentManager.findFragmentByTag("okDialog");
+	if (prev != null)
+	{
+	    ft.remove(prev);
+	}
+	ft.addToBackStack(null);
+
+	// Create and show the dialog.
+	okDialogFragment = OkDialogFragment.getInstance();
+	((OkDialogFragment) okDialogFragment).setDialogOkButtonClickListener(this);
+	okDialogFragment.show(ft, "okDialog");
+
+    }
     
-    ((FragmentDialog)getActivity()).showDialog();
+    public void hideDialog()
+    {
+	okDialogFragment.dismiss();
+    }
+
+    @Override
+    public void onDialogOkButtonClick()
+    {
+	hideDialog();	
+    }
 
 }
