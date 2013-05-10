@@ -8,7 +8,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.project.easeyourburden.Login;
 import com.project.easeyourburden.R;
 import com.project.easeyourburden.interfaces.DialogOkButtonClickListener;
 
@@ -34,7 +33,7 @@ public class OkDialogFragment extends DialogFragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Holo_Light_Dialog);
+        setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_Holo_Light_Dialog);
     }
     
     @Override
@@ -44,8 +43,6 @@ public class OkDialogFragment extends DialogFragment
 	Button button = (Button)v.findViewById(R.id.ok_button);
         button.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                // When button is clicked, call up to owning activity.
-               //((Login)getActivity()).hideDialog();
         	dialogOkButtonClickListener.onDialogOkButtonClick();
         	
             }

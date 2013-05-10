@@ -6,7 +6,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -96,10 +95,10 @@ public class Login extends Activity implements DialogOkButtonClickListener
 
     public void onLoginButtonClick(View v)
     {
-	showDialog();
+	showOKDialog();
     }
 
-    public void showDialog()
+    public void showOKDialog()
     {
 
 	// DialogFragment.show() will take care of adding the fragment
@@ -116,19 +115,27 @@ public class Login extends Activity implements DialogOkButtonClickListener
 	// Create and show the dialog.
 	okDialogFragment = OkDialogFragment.getInstance();
 	((OkDialogFragment) okDialogFragment).setDialogOkButtonClickListener(this);
-	//okDialogFragment.show(ft, "okDialog");
+	okDialogFragment.show(ft, "okDialog");
 
     }
 
     public void hideDialog()
     {
-	//okDialogFragment.dismiss();
+	okDialogFragment.dismiss();
     }
 
     @Override
     public void onDialogOkButtonClick()
     {
 	hideDialog();
+    }
+    
+    /**************************************************************************************************
+     * Callback Metohds
+     **************************************************************************************************/
+    public void onSinupButtonClick(View v)
+    {
+	showOKDialog();
     }
 
 }

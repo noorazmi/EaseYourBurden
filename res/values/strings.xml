@@ -16,6 +16,7 @@
     <string name="signup">SignUp</string>
     <string name="name">Name</string>
     <string name="ok">OK</string>
-    <string name="username_or_password_is_incorrect_">Username or Password is incorrect.</string>
+    <string name="username_or_password_is_incorrect">Username or Password is incorrect.</string>
+    <string name="please_enter_username_and_password">Please enter username and password.</string>
 
 </resources>
