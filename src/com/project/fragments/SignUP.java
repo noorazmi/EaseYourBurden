@@ -17,6 +17,4 @@ public class SignUP extends Fragment
 	return inflater.inflate(R.layout.signup, container, false);
 
     }
-    
-
 }
