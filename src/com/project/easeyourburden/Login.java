@@ -6,14 +6,15 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.project.dialogs.OkDialogFragment;
@@ -96,10 +97,21 @@ public class Login extends Activity implements DialogOkButtonClickListener
 
     public void onLoginButtonClick(View v)
     {
-	showDialog();
+	EditText userName = (EditText) findViewById(R.id.username);
+	EditText password = (EditText) findViewById(R.id.password);
+	if(userName.getText().toString().trim().equals("") || password.getText().toString().trim().equals(""))
+	{
+	    showOKDialog();
+	}
+	else
+	{
+	    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+	    startActivity(intent);
+	}
+	
     }
 
-    public void showDialog()
+    public void showOKDialog()
     {
 
 	// DialogFragment.show() will take care of adding the fragment
@@ -116,19 +128,27 @@ public class Login extends Activity implements DialogOkButtonClickListener
 	// Create and show the dialog.
 	okDialogFragment = OkDialogFragment.getInstance();
 	((OkDialogFragment) okDialogFragment).setDialogOkButtonClickListener(this);
-	//okDialogFragment.show(ft, "okDialog");
+	okDialogFragment.show(ft, "okDialog");
 
     }
 
     public void hideDialog()
     {
-	//okDialogFragment.dismiss();
+	okDialogFragment.dismiss();
     }
 
     @Override
     public void onDialogOkButtonClick()
     {
 	hideDialog();
+    }
+    
+    /**************************************************************************************************
+     * Callback Metohds
+     **************************************************************************************************/
+    public void onSinupButtonClick(View v)
+    {
+	showOKDialog();
     }
 
 }
