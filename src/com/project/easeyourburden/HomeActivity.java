@@ -27,7 +27,7 @@ public class HomeActivity extends Activity
 
     private void createTabs()
     {
-	//Tab tab = actionBar.newTab().setText("Home").setTabListener(this);
+	Tab tab = actionBar.newTab().setText("Home").setTabListener(this);
     }
 
     @Override
