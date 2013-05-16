@@ -9,10 +9,12 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.project.dialogs.OkDialogFragment;
@@ -95,7 +97,18 @@ public class Login extends Activity implements DialogOkButtonClickListener
 
     public void onLoginButtonClick(View v)
     {
-	showOKDialog();
+	EditText userName = (EditText) findViewById(R.id.username);
+	EditText password = (EditText) findViewById(R.id.password);
+	if(userName.getText().toString().trim().equals("") || password.getText().toString().trim().equals(""))
+	{
+	    showOKDialog();
+	}
+	else
+	{
+	    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+	    startActivity(intent);
+	}
+	
     }
 
     public void showOKDialog()
