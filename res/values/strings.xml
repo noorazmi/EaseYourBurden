@@ -20,5 +20,6 @@
     <string name="please_enter_username_and_password">Please enter username and password.</string>
     <string name="menu_settings">TODO</string>
     <string name="expenditure">Expenditure</string>
+    <string name="manager">Manager</string>
 
 </resources>

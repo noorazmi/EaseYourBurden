@@ -1,8 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_home"
         android:title="@string/menu_home"
-        android:showAsAction="always" />
-    <item android:id="@+id/menu_home"
+        android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menu_expenditure"
         android:title="@string/expenditure"
-        android:showAsAction="always" />
+        android:showAsAction="ifRoom|withText" />
+    
 </menu>

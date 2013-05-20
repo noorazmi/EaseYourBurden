@@ -101,7 +101,9 @@ public class Login extends Activity implements DialogOkButtonClickListener
 	EditText password = (EditText) findViewById(R.id.password);
 	if(userName.getText().toString().trim().equals("") || password.getText().toString().trim().equals(""))
 	{
-	    showOKDialog();
+	    //showOKDialog();
+	    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+	    startActivity(intent);
 	}
 	else
 	{
