@@ -21,5 +21,8 @@
     <string name="menu_settings">TODO</string>
     <string name="expenditure">Expenditure</string>
     <string name="manager">Manager</string>
+    <string name="creditor">Creditor</string>
+    <string name="amount">Amount</string>
+    <string name="debitor">Debitor</string>
 
 </resources>
