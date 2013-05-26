@@ -15,4 +15,7 @@ public class DebitsFragment extends Fragment
 	
         return inflater.inflate(R.layout.fragment_debits, container, false);
     }
+    
+    
+    
 }

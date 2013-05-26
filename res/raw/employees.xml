@@ -5,25 +5,25 @@
         	<Name>Nazakat Ali</Name>
         	<Id>1234</Id>
         	<Amount>342.25</Amount>
-        	<type>Debitor</type>
+        	<Type>Debitor</Type>
     	</Employee>
     	<Employee >
         	<Name>Shafiul Kabir</Name>
         	<Id>1134</Id>
         	<Amount>22.25</Amount>
-        	<type>Debitor</type>
+        	<Type>Debitor</Type>
     	</Employee>
     	<Employee >
         	<Name>Akbar</Name>
         	<Id>4357</Id>
         	<Amount>872.00</Amount>
-        	<type>Debitor</type>
+        	<Type>Debitor</Type>
     	</Employee>
     	<Employee >
         	<Name>Anwar Alam</Name>
         	<Id>6674</Id>
         	<Amount>66.95</Amount>
-        	<type>Debitor</type>
+        	<Type>Debitor</Type>
     	</Employee>
     </Credit>
     <Debit total="5463">
@@ -31,51 +31,51 @@
         	<Name>Nazakat Ali</Name>
         	<Id>1234</Id>
         	<Amount>376.25</Amount>
-        	<type>Creditor</type>
+        	<Type>Creditor</Type>
     	</Employee>
     	<Employee >
         	<Name>Shafiul Kabir</Name>
         	<Id>1134</Id>
         	<Amount>768.88</Amount>
-        	<type>Creditor</type>
+        	<Type>Creditor</Type>
     	</Employee>
     	<Employee >
         	<Name>Akbar</Name>
         	<Id>4357</Id>
         	<Amount>87.00</Amount>
-        	<type>Creditor</type>
+        	<Type>Creditor</Type>
     	</Employee>
     	<Employee >
         	<Name>Anwar Alam</Name>
         	<Id>6674</Id>
         	<Amount>878.34</Amount>
-        	<type>Creditor</type>
+        	<Type>Creditor</Type>
     	</Employee>
     </Debit>
-    <Status total="4553" type="Debit">
+    <Status total="4553" Type="Debit">
         <Employee>
         	<Name>Nazakat Ali</Name>
         	<Id>1234</Id>
         	<Amount>376.25</Amount>
-        	<type>Debitor</type>
+        	<Type>Debitor</Type>
     	</Employee>
     	<Employee>
         	<Name>Shafiul Kabir</Name>
         	<Id>1134</Id>
         	<Amount>768.88</Amount>
-        	<type>Debitor</type>
+        	<Type>Debitor</Type>
     	</Employee>
     	<Employee>
         	<Name>Akbar</Name>
         	<Id>4357</Id>
         	<Amount>87.00</Amount>
-        	<type>Creditor</type>
+        	<Type>Creditor</Type>
     	</Employee>
     	<Employee>
         	<Name>Anwar Alam</Name>
         	<Id>6674</Id>
         	<Amount>878.34</Amount>
-        	<type>Creditor</type>
+        	<Type>Creditor</Type>
     	</Employee>
     </Status>
     
