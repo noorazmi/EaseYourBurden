@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.res.Resources;
@@ -16,6 +15,7 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Xml;
+import android.util.Xml.Encoding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment
 {
     private Resources resources;
     private DebitCreditStatusParser debitCreditStatusParser;
-    private Activity activity;
+    private View debitView,creditView,statusView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -48,11 +48,10 @@ public class HomeFragment extends Fragment
 	return v;
     }
     @Override
-    public void onActivityCreated(Bundle savedInstanceState)
+    public void onActivityCreated(Bundle savedInstanceState) 
     {
         super.onActivityCreated(savedInstanceState);
         resources = getResources();
-        activity = getActivity();
         new LoadDebitsCreditsStatus().execute();
         
     }
@@ -69,20 +68,32 @@ public class HomeFragment extends Fragment
 	{
 	    LayoutInflater inflater = (LayoutInflater) collection.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    int resId = 0;
+	    View view = null;
 	    System.out.println("position= "+position);
+	    
+	    
+	    
+	    
 	    switch (position)
 	    {
 	    	case 0:
-	    	    resId = R.layout.debits_credits;
+	    	   // resId = R.layout.debits_credits;
+	    	    debitView = inflater.inflate(R.layout.debits_credits, null);
+	    	    view = debitView;
     		    break;
 	    	case 1:
-	    	    resId = R.layout.debits_credits;
+	    	    //resId = R.layout.debits_credits;
+	    	    creditView = inflater.inflate(R.layout.debits_credits, null);
+	    	    view = creditView;
 	    	    break;
 	    	case 2:
-    		    resId = R.layout.fragment_status;
+    		    //resId = R.layout.fragment_status;
+	    	    statusView = inflater.inflate(R.layout.fragment_status, null);
+	    	    view = statusView;
     		    break;
 	    }
-	    View view = inflater.inflate(resId, null);
+	    
+	    //View view = inflater.inflate(resId, null);
 	    ((ViewPager) collection).addView(view, 0);
 	    return view;
 	}
@@ -116,18 +127,8 @@ public class HomeFragment extends Fragment
 	    try
 	    {
 		stream = resources.openRawResource(R.raw.employees);
-		BufferedReader r = new BufferedReader(new InputStreamReader(stream));
-		StringBuilder total = new StringBuilder();
-		String line;
-		while ((line = r.readLine()) != null) {
-		    total.append(line);
-		}
-		
 		debitCreditStatusParser = new DebitCreditStatusParser();
-		//Xml.parse(stream, Encoding.UTF_8, debitCreditStatusParser);
-		String result = total.toString();
-		System.out.println("result= "+result);
-		Xml.parse(result, debitCreditStatusParser);
+		Xml.parse(stream, Encoding.UTF_8, debitCreditStatusParser);
 		
 		
 	    }
@@ -158,10 +159,13 @@ public class HomeFragment extends Fragment
 	{
 	    DebitsCreditsStatusData debitsCreditsStatusData = debitCreditStatusParser.DebitsCreditsStatusData();
 	    ArrayList<DebitsData> debitsDataList = debitsCreditsStatusData.getDebitsDataList();
-	    ListView debitsListview = (ListView) getActivity().findViewById(R.id.debits_listview);
+	    ListView debitsListview = (ListView) debitView.findViewById(R.id.debits_listview);
+	    ListView creditsListview = (ListView) creditView.findViewById(R.id.debits_listview);
 	    DebitListAdapter debitListAdapter = new DebitListAdapter(getActivity(), debitsDataList);
 	    debitsListview.setAdapter(debitListAdapter);
+	    creditsListview.setAdapter(debitListAdapter);
 	    debitsListview.setCacheColorHint(0);
+	    creditsListview.setCacheColorHint(0);
 	}
 	
     }
