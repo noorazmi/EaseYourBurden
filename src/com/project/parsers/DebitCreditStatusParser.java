@@ -31,7 +31,6 @@ public class DebitCreditStatusParser extends DefaultHandler
     @Override
     public void startDocument() throws SAXException
     {
-	dataList = new ArrayList<DebitsData>();
 	debitsCreditsStatusData = new DebitsCreditsStatusData();
     }
 
@@ -46,14 +45,17 @@ public class DebitCreditStatusParser extends DefaultHandler
     {
 	if (localName.equals("Debit"))
 	{
+	    dataList = new ArrayList<DebitsData>();
 	    debitsCreditsStatusData.setTotalDebitAmount(attributes.getValue("total").trim());
 	}
 	else if(localName.equals("Credit"))
 	{
+	    dataList = new ArrayList<DebitsData>();
 	    debitsCreditsStatusData.setTotalCreditAmount(attributes.getValue("total").trim());
 	}
 	else if(localName.equals("Status"))
 	{
+	    dataList = new ArrayList<DebitsData>();
 	    debitsCreditsStatusData.setTotalStatusAmount(attributes.getValue("total").trim());
 	    debitsCreditsStatusData.setStatusType(attributes.getValue("statusType").trim());
 	}

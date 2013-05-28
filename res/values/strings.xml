@@ -26,5 +26,7 @@
     <string name="debitor">Debitor</string>
     <string name="details">Details</string>
     <string name="settlement">Settlement</string>
+    <string name="total_expended_amount_by_you_on_others_">Total expended amount by you on others:</string>
+    <string name="total_expended_amount_by_others_on_you">Total expended amount by others on you:</string>
 
 </resources>

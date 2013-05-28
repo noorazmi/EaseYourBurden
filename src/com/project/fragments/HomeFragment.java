@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.easeyourburden.views.SimpleViewPagerIndicator;
 import com.project.adapters.DebitListAdapter;
@@ -159,6 +160,17 @@ public class HomeFragment extends Fragment
 	{
 	    DebitsCreditsStatusData debitsCreditsStatusData = debitCreditStatusParser.getDebitsCreditsStatusData();
 	    
+	    TextView v = (TextView) debitView.findViewById(R.id.description);
+	    v.setText(resources.getString(R.string.total_expended_amount_by_others_on_you));
+	    v = (TextView) debitView.findViewById(R.id.total_amount);
+	    v.setText(debitsCreditsStatusData.getTotalDebitAmount()+"/-");
+	    
+	    
+	    
+	    v = (TextView) creditView.findViewById(R.id.description);
+	    v.setText(resources.getString(R.string.total_expended_amount_by_you_on_others_));
+	    v = (TextView) creditView.findViewById(R.id.total_amount);
+	    v.setText(debitsCreditsStatusData.getTotalCreditAmount()+"/-");
 	    
 	    
 	    ListView debitsListview = (ListView) debitView.findViewById(R.id.debits_listview);
