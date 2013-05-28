@@ -60,9 +60,18 @@ public class DebitListAdapter extends BaseAdapter
 	{
 	    convertView = inflater.inflate(R.layout.debit_credit_row, null); 
 	    holder = new ViewHolder();
-	    holder.employeeId = (TextView) convertView.findViewById(R.id.employee_name);
+	    holder.employeeName = (TextView) convertView.findViewById(R.id.employee_name);
+	    holder.amount =  (TextView) convertView.findViewById(R.id.amount);
+	    convertView.setTag(holder);
 	}
-	return null;
+	else
+	{
+	    holder = (ViewHolder) convertView.getTag();
+	}
+	
+	holder.employeeName.setText(debitsData.getEmployeeName());
+	holder.amount.setText(debitsData.getAmount());
+	return convertView;
     }
 
     private class ViewHolder

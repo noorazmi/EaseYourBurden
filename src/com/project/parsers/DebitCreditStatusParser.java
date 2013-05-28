@@ -6,6 +6,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import com.project.parsers.data.DebitsCreditsStatusData;
 import com.project.parsers.data.DebitsData;
 
 public class DebitCreditStatusParser extends DefaultHandler
@@ -19,16 +20,19 @@ public class DebitCreditStatusParser extends DefaultHandler
 
     private DebitsData debitsData;
 
+
     /**
      * List of all employees parsed by this parser.
      */
-    private ArrayList<DebitsData> debitsDataList;
+    private ArrayList<DebitsData> dataList;
 
+    private DebitsCreditsStatusData debitsCreditsStatusData;
 
     @Override
     public void startDocument() throws SAXException
     {
-	debitsDataList = new ArrayList<DebitsData>();
+	dataList = new ArrayList<DebitsData>();
+	debitsCreditsStatusData = new DebitsCreditsStatusData();
     }
 
     @Override
@@ -42,8 +46,7 @@ public class DebitCreditStatusParser extends DefaultHandler
     {
 	if (localName.equals("Debit"))
 	{
-	    debitsData = new DebitsData();
-	    debitsData.setAmount(attributes.getValue("total").trim());
+	    debitsCreditsStatusData.setTotalDebitAmount(attributes.getValue("total").trim());
 	}
     }
 
@@ -52,6 +55,7 @@ public class DebitCreditStatusParser extends DefaultHandler
     {
 	if (localName.equals("Name"))
 	{
+	    debitsData = new DebitsData();
 	    debitsData.setEmployeeName(buffer.toString().trim());
 	    buffer = new StringBuffer();
 
@@ -61,18 +65,30 @@ public class DebitCreditStatusParser extends DefaultHandler
 	    debitsData.setEmployeeId(buffer.toString().trim());
 	    buffer = new StringBuffer();
 	}
+	else if(localName.equals("Amount"))
+	{
+	    debitsData.setAmount(buffer.toString().trim());
+	    buffer = new StringBuffer();
+	}
 	else if (localName.equals("Type"))
 	{
 	    debitsData.setType(buffer.toString().trim());
 	    buffer = new StringBuffer();
-	    debitsDataList.add(debitsData);
+	    dataList.add(debitsData);
+
+	}
+	else if (localName.equals("Debit"))
+	{
+	    debitsCreditsStatusData.setDebitsDataList(dataList);
+	    //debitsData = new DebitsData();
 	}
 	
+
     }
 
-    public ArrayList<DebitsData> getDebitsList()
+    public DebitsCreditsStatusData DebitsCreditsStatusData()
     {
-	return debitsDataList;
+	return debitsCreditsStatusData;
     }
-    
+
 }
