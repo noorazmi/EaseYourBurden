@@ -157,13 +157,25 @@ public class HomeFragment extends Fragment
 	@Override
 	protected void onPostExecute(Void result)
 	{
-	    DebitsCreditsStatusData debitsCreditsStatusData = debitCreditStatusParser.DebitsCreditsStatusData();
-	    ArrayList<DebitsData> debitsDataList = debitsCreditsStatusData.getDebitsDataList();
+	    DebitsCreditsStatusData debitsCreditsStatusData = debitCreditStatusParser.getDebitsCreditsStatusData();
+	    
+	    
+	    
 	    ListView debitsListview = (ListView) debitView.findViewById(R.id.debits_listview);
 	    ListView creditsListview = (ListView) creditView.findViewById(R.id.debits_listview);
-	    DebitListAdapter debitListAdapter = new DebitListAdapter(getActivity(), debitsDataList);
-	    debitsListview.setAdapter(debitListAdapter);
-	    creditsListview.setAdapter(debitListAdapter);
+	    ListView statusListview = (ListView) statusView.findViewById(R.id.status_listview);
+	    
+	    
+	    ArrayList<DebitsData> dataList = debitsCreditsStatusData.getDebitsDataList();
+	    DebitListAdapter listAdapter = new DebitListAdapter(getActivity(), dataList);
+	    debitsListview.setAdapter(listAdapter);
+	    
+	    dataList = debitsCreditsStatusData.getCreditsDataList();
+	    listAdapter = new DebitListAdapter(getActivity(), dataList);
+	    creditsListview.setAdapter(listAdapter);
+	    
+	    
+	    
 	    debitsListview.setCacheColorHint(0);
 	    creditsListview.setCacheColorHint(0);
 	}

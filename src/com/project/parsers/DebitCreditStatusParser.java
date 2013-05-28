@@ -48,6 +48,15 @@ public class DebitCreditStatusParser extends DefaultHandler
 	{
 	    debitsCreditsStatusData.setTotalDebitAmount(attributes.getValue("total").trim());
 	}
+	else if(localName.equals("Credit"))
+	{
+	    debitsCreditsStatusData.setTotalCreditAmount(attributes.getValue("total").trim());
+	}
+	else if(localName.equals("Status"))
+	{
+	    debitsCreditsStatusData.setTotalStatusAmount(attributes.getValue("total").trim());
+	    debitsCreditsStatusData.setStatusType(attributes.getValue("statusType").trim());
+	}
     }
 
     @Override
@@ -80,13 +89,24 @@ public class DebitCreditStatusParser extends DefaultHandler
 	else if (localName.equals("Debit"))
 	{
 	    debitsCreditsStatusData.setDebitsDataList(dataList);
-	    //debitsData = new DebitsData();
+	    debitsData = new DebitsData();
 	}
+	else if (localName.equals("Credit"))
+	{
+	    debitsCreditsStatusData.setCreditsDataList(dataList);
+	    debitsData = new DebitsData();
+	}
+	else if (localName.equals("Status"))
+	{
+	    debitsCreditsStatusData.setStatusDataList(dataList);
+	   debitsData = new DebitsData();
+	}
+	
 	
 
     }
 
-    public DebitsCreditsStatusData DebitsCreditsStatusData()
+    public DebitsCreditsStatusData getDebitsCreditsStatusData()
     {
 	return debitsCreditsStatusData;
     }
