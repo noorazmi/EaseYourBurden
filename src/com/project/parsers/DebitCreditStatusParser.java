@@ -84,22 +84,19 @@ public class DebitCreditStatusParser extends DefaultHandler
 	    debitsData.setType(buffer.toString().trim());
 	    buffer = new StringBuffer();
 	    dataList.add(debitsData);
-
 	}
 	else if (localName.equals("Debit"))
 	{
 	    debitsCreditsStatusData.setDebitsDataList(dataList);
-	    debitsData = new DebitsData();
+	   
 	}
 	else if (localName.equals("Credit"))
 	{
 	    debitsCreditsStatusData.setCreditsDataList(dataList);
-	    debitsData = new DebitsData();
 	}
 	else if (localName.equals("Status"))
 	{
 	    debitsCreditsStatusData.setStatusDataList(dataList);
-	   debitsData = new DebitsData();
 	}
 	
 	
