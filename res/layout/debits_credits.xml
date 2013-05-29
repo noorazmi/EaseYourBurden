@@ -1,44 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     android:paddingLeft="15dp"
-    android:paddingRight="15dp" >
+    android:paddingRight="15dp"
+    android:paddingTop="20dp" >
 
-    <LinearLayout
-        android:id="@+id/LinearLayoutTop"
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" 
-        android:gravity="left|center_vertical">
+        android:gravity="left" >
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total_expended_amount_by_others_on_you"
-            android:singleLine="false"
-            android:gravity="fill_horizontal"/>
+            android:layout_toLeftOf="@+id/total_amount" >
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:gravity="left"
+                android:singleLine="false"
+                android:text="@string/total_expended_amount_by_others_on_you" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/total_amount"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4336.50/-"
-            android:textAppearance="?android:attr/textAppearanceMedium" 
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="left"
             android:singleLine="true"
-            android:gravity="left"/>
-    </LinearLayout>
+            android:text="4336.50/-"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayoutMiddle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/LinearLayoutTop"
-        android:layout_centerHorizontal="true" >
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/textView2"
@@ -83,9 +92,7 @@
     <ListView
         android:id="@+id/debits_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/LinearLayoutMiddle"
-        android:layout_centerHorizontal="true" >
+        android:layout_height="match_parent" >
     </ListView>
 
-</RelativeLayout>
+</LinearLayout>
