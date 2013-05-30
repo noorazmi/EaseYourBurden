@@ -28,5 +28,8 @@
     <string name="settlement">Settlement</string>
     <string name="total_expended_amount_by_you_on_others_">Total expended amount by you on others:</string>
     <string name="total_expended_amount_by_others_on_you">Total expended amount by others on you:</string>
+    <string name="debit">Debit</string>
+    <string name="credit">Credit</string>
+    <string name="status">Status</string>
 
 </resources>

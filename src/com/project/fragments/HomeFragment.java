@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment
 	ViewPager acounViewpager = (ViewPager) v.findViewById(R.id.acount_viewpager);
 	acounViewpager.setAdapter(adapter);
 	acounViewpager.setOffscreenPageLimit(3);
-	acounViewpager.setCurrentItem(0);
+	acounViewpager.setCurrentItem(1);
 	SimpleViewPagerIndicator pageIndicator = (SimpleViewPagerIndicator) v.findViewById(R.id.page_indicator);
 	pageIndicator.setViewPager(acounViewpager);
 	pageIndicator.notifyDataSetChanged();
@@ -116,6 +116,25 @@ public class HomeFragment extends Fragment
 	public Parcelable saveState()
 	{
 	    return null;
+	}
+	
+	@Override
+	public CharSequence getPageTitle(int position)
+	{
+	    String title = null;
+	    switch (position)
+	    {
+	    case 0:
+		title=resources.getString(R.string.debit);
+		break;
+	    case 1:
+		title=resources.getString(R.string.credit);
+		break;
+	    case 2:
+		title=resources.getString(R.string.status);
+		break;
+	    }
+	    return title;
 	}
     }
     
