@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 
 import com.project.dialogs.OkDialogFragment;
 import com.project.easeyourburden.interfaces.DialogOkButtonClickListener;
+import com.project.parsers.data.LoginData;
 
 public class Login extends Activity implements DialogOkButtonClickListener
 {
@@ -111,6 +112,7 @@ public class Login extends Activity implements DialogOkButtonClickListener
 	    startActivity(intent);
 	}
 	
+	LoginData.setUserName("Noor Alam");
     }
 
     public void showOKDialog()

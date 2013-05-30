@@ -23,7 +23,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.easeyourburden.views.SimpleViewPagerIndicator;
-import com.project.adapters.DebitListAdapter;
+import com.project.adapters.DebitCreditListAdapter;
+import com.project.adapters.StatusListAdapter;
 import com.project.easeyourburden.R;
 import com.project.parsers.DebitCreditStatusParser;
 import com.project.parsers.data.DebitsCreditsStatusData;
@@ -89,7 +90,7 @@ public class HomeFragment extends Fragment
 	    	    break;
 	    	case 2:
     		    //resId = R.layout.fragment_status;
-	    	    statusView = inflater.inflate(R.layout.fragment_status, null);
+	    	    statusView = inflater.inflate(R.layout.status, null);
 	    	    view = statusView;
     		    break;
 	    }
@@ -160,36 +161,50 @@ public class HomeFragment extends Fragment
 	{
 	    DebitsCreditsStatusData debitsCreditsStatusData = debitCreditStatusParser.getDebitsCreditsStatusData();
 	    
+	    
+	    /** Total amount  expended by others on you. **/
 	    TextView v = (TextView) debitView.findViewById(R.id.description);
 	    v.setText(resources.getString(R.string.total_expended_amount_by_others_on_you));
 	    v = (TextView) debitView.findViewById(R.id.total_amount);
 	    v.setText(debitsCreditsStatusData.getTotalDebitAmount()+"/-");
 	    
+	    ListView debitsListview = (ListView) debitView.findViewById(R.id.debits_listview);
+	    ArrayList<DebitsData> debitsDataList = debitsCreditsStatusData.getDebitsDataList();
+	    DebitCreditListAdapter debitListAdapter = new DebitCreditListAdapter(getActivity(), debitsDataList);
+	    debitsListview.setAdapter(debitListAdapter);
+	    debitsListview.setCacheColorHint(0);
 	    
 	    
+	    
+	    /** Total amount expended by you on others. **/
 	    v = (TextView) creditView.findViewById(R.id.description);
 	    v.setText(resources.getString(R.string.total_expended_amount_by_you_on_others_));
 	    v = (TextView) creditView.findViewById(R.id.total_amount);
 	    v.setText(debitsCreditsStatusData.getTotalCreditAmount()+"/-");
 	    
-	    
-	    ListView debitsListview = (ListView) debitView.findViewById(R.id.debits_listview);
 	    ListView creditsListview = (ListView) creditView.findViewById(R.id.debits_listview);
-	    ListView statusListview = (ListView) statusView.findViewById(R.id.status_listview);
-	    
-	    
-	    ArrayList<DebitsData> dataList = debitsCreditsStatusData.getDebitsDataList();
-	    DebitListAdapter listAdapter = new DebitListAdapter(getActivity(), dataList);
-	    debitsListview.setAdapter(listAdapter);
-	    
-	    dataList = debitsCreditsStatusData.getCreditsDataList();
-	    listAdapter = new DebitListAdapter(getActivity(), dataList);
-	    creditsListview.setAdapter(listAdapter);
-	    
-	    
-	    
-	    debitsListview.setCacheColorHint(0);
+	    ArrayList<DebitsData> creditsDataList = debitsCreditsStatusData.getCreditsDataList();
+	    DebitCreditListAdapter creditListAdapter = new DebitCreditListAdapter(getActivity(), creditsDataList);
+	    creditsListview.setAdapter(creditListAdapter);
 	    creditsListview.setCacheColorHint(0);
+	    
+	    
+	    
+	    /** Balance Status **/
+	    ListView statusListview = (ListView) statusView.findViewById(R.id.status_listview);
+	    ArrayList<DebitsData> statusDataList = debitsCreditsStatusData.getStatusDataList();
+	    StatusListAdapter statusListAdapter = new StatusListAdapter(getActivity(), statusDataList);
+	    statusListview.setAdapter(statusListAdapter);
+	    statusListview.setCacheColorHint(0);
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 	}
 	
     }

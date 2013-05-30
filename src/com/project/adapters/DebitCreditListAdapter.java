@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class DebitListAdapter extends BaseAdapter
+public class DebitCreditListAdapter extends BaseAdapter
 {
     private ArrayList<DebitsData> debitsDataList;
     private LayoutInflater inflater;
 
-    public DebitListAdapter(Context context, ArrayList<DebitsData> debitsDataList)
+    public DebitCreditListAdapter(Context context, ArrayList<DebitsData> debitsDataList)
     {
 	inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	this.debitsDataList = debitsDataList;
@@ -77,7 +77,6 @@ public class DebitListAdapter extends BaseAdapter
     private class ViewHolder
     {
 	TextView employeeName;
-	TextView employeeId;
 	TextView amount;
     }
 
