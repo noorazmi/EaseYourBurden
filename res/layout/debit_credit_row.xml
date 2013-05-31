@@ -5,25 +5,21 @@
     android:orientation="horizontal"
     android:paddingTop="@dimen/debit_credit_status_row_padding_top"
     android:paddingBottom="@dimen/debit_credit_status_row_padding_bottom"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:paddingLeft="@dimen/list_header_left_padding"
+    android:background="@color/list_row_background_color">
 
     <TextView
+        style="@style/list_view_row_text_style"
         android:id="@+id/employee_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_weight="4"
-        android:text="Shafiul Kabir" 
-        android:ellipsize="end"
-        android:singleLine="true"/>
+        android:text="Shafiul Kabir"/>
 
     <TextView
+        style="@style/list_view_row_text_style"
         android:id="@+id/amount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_weight="3"
         android:text="3452.55" 
-        android:singleLine="true"
-        android:ellipsize="end"
         android:gravity="center"/>
 
     <ImageView

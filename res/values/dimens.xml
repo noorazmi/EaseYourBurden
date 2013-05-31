@@ -2,5 +2,6 @@
 <resources>
     <dimen name="debit_credit_status_row_padding_top">10dp</dimen>
     <dimen name="debit_credit_status_row_padding_bottom">10dp</dimen>
+    <dimen name="list_header_left_padding">5dp</dimen>
     
 </resources>

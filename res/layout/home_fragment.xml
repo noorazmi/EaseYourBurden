@@ -8,15 +8,15 @@
         android:id="@+id/page_indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:gravity="center" />
-
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:gravity="center"
+        android:background="@color/list_row_background_color"/>
     <android.support.v4.view.ViewPager
         android:id="@+id/acount_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layoutDirection="rtl" 
-        android:paddingTop="5dp">
+        android:layoutDirection="rtl">
         <android.support.v4.view.PagerTabStrip
 			android:id="@+id/pager_header"
 			android:layout_width="wrap_content"

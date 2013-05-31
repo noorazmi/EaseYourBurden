@@ -4,60 +4,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp" 
-    android:paddingTop="20dp">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relativeLayoutTop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:background="@color/list_row_background_color">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="Balance status"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_marginRight="5dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/list_header_left_padding"
+            android:paddingTop="2dip"
+            android:singleLine="false"
+            android:text="@string/balance_status"
+            android:textColor="@android:color/white"  />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/status_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:text="Debit : 4336.50/-"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium" 
+            android:textColor="@android:color/white"
+            android:paddingRight="5dp"/>
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/LinearLayoutMiddle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:background="@color/list_header_background_color"
+        android:paddingLeft="@dimen/list_header_left_padding"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:gravity="left"
             android:text="@string/creditor" />
-
+		<View style="@style/divider"/>
         <TextView
             android:id="@+id/textView3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:gravity="left"
+            android:layout_weight="5"
+            android:gravity="center"
             android:text="@string/debitor" />
-
+		<View style="@style/divider"/>
         <TextView
             android:id="@+id/textView4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:gravity="center"
             android:text="@string/amount" />
     </LinearLayout>
