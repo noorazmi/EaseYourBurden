@@ -1,7 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_home"
-        android:title="@string/menu_home"
-        android:showAsAction="ifRoom|withText" />
+   <!--  <item android:id="@+id/action_search"
+         android:title="@string/search"
+         android:icon="@android:drawable/ic_menu_search"
+         android:showAsAction="always"
+         android:actionViewClass="android.widget.SearchView" 
+         /> -->
     <item android:id="@+id/menu_expenditure"
         android:title="@string/expenditure"
         android:showAsAction="ifRoom|withText" />

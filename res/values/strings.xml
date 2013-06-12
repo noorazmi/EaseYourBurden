@@ -32,5 +32,6 @@
     <string name="credit">Credit</string>
     <string name="status">Status</string>
     <string name="balance_status">Balance status</string>
+    <string name="search">Search</string>
 
 </resources>

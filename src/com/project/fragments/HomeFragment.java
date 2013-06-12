@@ -1,9 +1,7 @@
 package com.project.fragments;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import android.app.Fragment;
@@ -14,12 +12,15 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Xml;
 import android.util.Xml.Encoding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.SearchView.OnQueryTextListener;
 import android.widget.TextView;
 
 import com.easeyourburden.views.SimpleViewPagerIndicator;
@@ -30,11 +31,14 @@ import com.project.parsers.DebitCreditStatusParser;
 import com.project.parsers.data.DebitsCreditsStatusData;
 import com.project.parsers.data.DebitsData;
 
-public class HomeFragment extends Fragment
+public class HomeFragment extends Fragment implements OnQueryTextListener
 {
     private Resources resources;
     private DebitCreditStatusParser debitCreditStatusParser;
     private View debitView,creditView,statusView;
+    private ListView debitsListview;
+    private ListView creditsListview;
+    private ListView statusListview;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -187,11 +191,12 @@ public class HomeFragment extends Fragment
 	    v = (TextView) debitView.findViewById(R.id.total_amount);
 	    v.setText(debitsCreditsStatusData.getTotalDebitAmount()+"/-");
 	    
-	    ListView debitsListview = (ListView) debitView.findViewById(R.id.debits_listview);
+	    debitsListview = (ListView) debitView.findViewById(R.id.debits_listview);
 	    ArrayList<DebitsData> debitsDataList = debitsCreditsStatusData.getDebitsDataList();
 	    DebitCreditListAdapter debitListAdapter = new DebitCreditListAdapter(getActivity(), debitsDataList);
 	    debitsListview.setAdapter(debitListAdapter);
 	    debitsListview.setCacheColorHint(0);
+	    debitsListview.setTextFilterEnabled(true);
 	    
 	    
 	    
@@ -201,31 +206,49 @@ public class HomeFragment extends Fragment
 	    v = (TextView) creditView.findViewById(R.id.total_amount);
 	    v.setText(debitsCreditsStatusData.getTotalCreditAmount()+"/-");
 	    
-	    ListView creditsListview = (ListView) creditView.findViewById(R.id.debits_listview);
+	    creditsListview = (ListView) creditView.findViewById(R.id.debits_listview);
 	    ArrayList<DebitsData> creditsDataList = debitsCreditsStatusData.getCreditsDataList();
 	    DebitCreditListAdapter creditListAdapter = new DebitCreditListAdapter(getActivity(), creditsDataList);
 	    creditsListview.setAdapter(creditListAdapter);
 	    creditsListview.setCacheColorHint(0);
+	    //creditsListview.setTextFilterEnabled(true);
 	    
 	    
 	    
 	    /** Balance Status **/
-	    ListView statusListview = (ListView) statusView.findViewById(R.id.status_listview);
+	    statusListview = (ListView) statusView.findViewById(R.id.status_listview);
 	    ArrayList<DebitsData> statusDataList = debitsCreditsStatusData.getStatusDataList();
 	    StatusListAdapter statusListAdapter = new StatusListAdapter(getActivity(), statusDataList);
 	    statusListview.setAdapter(statusListAdapter);
 	    statusListview.setCacheColorHint(0);
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	    
+	    //statusListview.setTextFilterEnabled(true);
 	    
 	}
 	
+    }
+
+    @Override
+    public boolean onQueryTextChange(String value)
+    {
+	System.out.println("value = "+value);
+	if(TextUtils.isEmpty(value))
+	{
+	    debitsListview.clearTextFilter();
+	    creditsListview.clearTextFilter();
+	    //statusListview.clearTextFilter();
+	}
+	else
+	{
+	    debitsListview.setFilterText(value);
+	    creditsListview.setFilterText(value);
+	    //statusListview.setFilterText(value);
+	}
+	return true;
+    }
+    @Override
+    public boolean onQueryTextSubmit(String query)
+    {
+	return false;
     }
     
 }
